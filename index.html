@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Security Risk</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            font-family: 'Arial', sans-serif;
+        }
+        .flashing-text {
+            font-size: 5vw;
+            color: red;
+            animation: flash 1s infinite;
+            text-align: center;
+        }
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flashing-text">I'm a security risk, I leave my computer unlocked</div>
+</body>
+</html>
