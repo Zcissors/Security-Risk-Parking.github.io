@@ -1,31 +1,268 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Security Risk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Worst Security Nightmare - Lock Your Computer!</title>
     <style>
-        html, body {
-            height: 100%;
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            font-family: 'Arial', sans-serif;
+            padding: 0;
+            line-height: 1.6;
+            color: #fff;
+            background: #000;
         }
-        .flashing-text {
-            font-size: 5vw;
-            color: red;
-            animation: flash 1s infinite;
+
+        header {
+            background: #1a0000;
+            color: #ff0000;
+            padding: 2rem;
             text-align: center;
+            border-bottom: 2px solid #ff0000;
         }
-        @keyframes flash {
-            0%, 100% { opacity: 1; }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                        url('/api/placeholder/1200/600');
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "WARNING";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 150px;
+            opacity: 0.1;
+            color: #ff0000;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .risk-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: #1a0000;
+            border: 1px solid #ff0000;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .shortcut-section {
+            background: #1a0000;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid #ff0000;
+            border-bottom: 1px solid #ff0000;
+        }
+
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .shortcut-card {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ff0000;
+        }
+
+        .kbd {
+            background: #ff0000;
+            color: #fff;
+            border-radius: 4px;
+            padding: 0.2rem 0.5rem;
+            font-family: monospace;
+        }
+
+        footer {
+            background: #1a0000;
+            color: #ff0000;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-top: 2px solid #ff0000;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff0000;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #cc0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #ff0000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h3 {
+            color: #ff0000;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
             50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .scary-counter {
+            font-size: 3rem;
+            color: #ff0000;
+            margin: 2rem 0;
+            font-family: monospace;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        #threats {
+            scroll-margin-top: 2rem;
         }
     </style>
 </head>
 <body>
-    <div class="flashing-text">I'm a security risk, I leave my computer unlocked</div>
+    <header>
+        <h1 class="blink">⚠️ UH OH ⚠️</h1>
+    </header>
+
+    <section class="hero">
+        <h2 class="pulse">YOUR COMPUTER IS VULNERABLE</h2>
+        <div class="scary-counter" id="counter">00:00:00</div>
+        <p>Time an attacker needs to compromise your unlocked workstation</p>
+        <button onclick="document.getElementById('threats').scrollIntoView()" class="cta-button blink">Protect Yourself Now</button>
+    </section>
+
+    <div class="container" id="threats">
+        <h2>YOUR WORST NIGHTMARES BECOME REALITY</h2>
+        <div class="risk-cards">
+            <div class="card">
+                <h3>Complete Identity Theft</h3>
+                <p>In just 30 seconds, attackers can: Access your email, Find your personal files, Steal your banking credentials, Send malicious emails to your entire contact list.</p>
+            </div>
+            <div class="card">
+                <h3>Career Destruction</h3>
+                <p>Imagine coming back to find inappropriate messages sent to your boss, confidential data leaked, or your work sabotaged - all under YOUR name.</p>
+            </div>
+            <div class="card">
+                <h3>Total System Compromise</h3>
+                <p>Silent keyloggers recording every password you type, backdoors giving permanent access to criminals, ransomware encrypting everything you own.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="shortcut-section">
+        <h2>SAVE YOURSELF WITH ONE SHORTCUT</h2>
+        <div class="shortcut-grid">
+            <div class="shortcut-card">
+                <h3>Windows</h3>
+                <p><span class="kbd">Windows</span> + <span class="kbd">L</span></p>
+            </div>
+            <div class="shortcut-card">
+                <h3>Mac</h3>
+                <p><span class="kbd">Command</span> + <span class="kbd">Control</span> + <span class="kbd">Q</span></p>
+            </div>
+            <div class="shortcut-card">
+                <h3>Linux</h3>
+                <p><span class="kbd">Ctrl</span> + <span class="kbd">Alt</span> + <span class="kbd">L</span></p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2>DON'T BECOME A VICTIM</h2>
+        <div class="risk-cards">
+            <div class="card">
+                <h3>Every Second Counts</h3>
+                <p>It takes just seconds for an attacker to insert a USB device and compromise your entire system. Never leave your computer unlocked - not even for a minute.</p>
+            </div>
+            <div class="card">
+                <h3>They're Watching</h3>
+                <p>Bad actors are constantly looking for unlocked computers. The break room, the bathroom break, the quick meeting - they know when to strike.</p>
+            </div>
+            <div class="card">
+                <h3>No Second Chances</h3>
+                <p>Once your system is compromised, there's no going back. Your data, your identity, your career - all can be destroyed in an instant.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 SecurityRisk.cc - Because Your Worst Security Nightmare Could Be Reality</p>
+    </footer>
+
+    <script>
+        // Counter animation
+        function updateCounter() {
+            const counter = document.getElementById('counter');
+            let seconds = 0;
+            setInterval(() => {
+                seconds++;
+                const hours = Math.floor(seconds / 3600);
+                const minutes = Math.floor((seconds % 3600) / 60);
+                const secs = seconds % 60;
+                counter.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
+        }
+        updateCounter();
+    </script>
 </body>
 </html>
